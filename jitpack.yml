@@ -1,0 +1,11 @@
+jdk:
+  - openjdk17
+before_install:
+   - ./custom_setup.sh
+install:
+   -file="-Dfile=andorid-NFCCharging-debug.aar"
+   -mvn install:install-file $file -DgroupId=gt.wmrd.andorid_nfccharging -DartificarId=myfirstapplication  -Dversion=1.0.0.1 -Dpackage=aar -Dgeneratedpom=true 
+   - echo "Running a custom install command"
+   - ./gradlew clean install -xtest
+env:
+   MYVAR: "custom environment variable"
